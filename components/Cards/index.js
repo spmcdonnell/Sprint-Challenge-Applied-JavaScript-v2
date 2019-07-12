@@ -20,24 +20,14 @@
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles').then(data => {
     const cardArticles = data.data.articles;
-    console.log(cardArticles);
-    // const { bootstrap, javascript, jquery, node, technology } = cardArticles;
-
     const cardsContainer = document.querySelector('.cards-container');
 
+    // Build out cards with proper data attribute and stick in DOM
     for (key in cardArticles) {
         cardArticles[key].forEach(card => {
             cardsContainer.appendChild(createCard(card, key));
         });
     }
-
-    // const allArticles = [...bootstrap, ...javascript, ...jquery, ...node, ...technology];
-
-    // console.log(cardArticles);
-
-    // allArticles.forEach(card => {
-    //     cardsContainer.appendChild(createCard(card));
-    // });
 });
 
 function createCard(data, category) {
