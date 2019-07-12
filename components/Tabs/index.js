@@ -18,6 +18,8 @@ function createTabs(data) {
 
         listItem.classList.add('tab');
 
+        listItem.dataset.tab = item;
+
         listItem.textContent = item;
 
         document.querySelector('.topics').appendChild(listItem);
