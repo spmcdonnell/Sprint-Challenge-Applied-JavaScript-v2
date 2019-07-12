@@ -30,13 +30,23 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+A branching object representation of the code that makes up a webpage with each node being an object that respresents a DOM node, which may have further children/sibling nodes. It's an API that allows us to traverse and interact with our web page. I think typing in console.dir(document) in the console is the closest you can get to 'seeing' the DOM for a particular web page.
+
 2. What is an event?
+
+An event is a change of some sort. Could be from some kind of user input, or something else related to resources or the network connection, etc.
 
 3. What is an event listener?
 
+Some code that detects the events described above, and when it occurs runs a callback that implements some change, usually.
+
 4. Why would we convert a NodeList into an Array?
 
+To gain access to more helpful array methods for manipulating our nodes.
+
 5. What is a component?
+
+Some discreet unit of functionality (layout/style/logic) that can be reused/repeated/deleted as necessary with minimal additional effort once the component is completed. Commonly associated with OOP programming.
 
 ### Git Set up
 
