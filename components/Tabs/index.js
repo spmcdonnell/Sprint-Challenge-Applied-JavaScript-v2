@@ -13,6 +13,16 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics').then(data => {
 });
 
 function createTabs(data) {
+    var allTab = document.createElement('div');
+
+    allTab.classList.add('tab');
+
+    allTab.dataset.tab = 'all';
+
+    allTab.textContent = 'All';
+
+    document.querySelector('.topics').appendChild(allTab);
+
     data.forEach(item => {
         var listItem = document.createElement('div');
 
@@ -25,3 +35,34 @@ function createTabs(data) {
         document.querySelector('.topics').appendChild(listItem);
     });
 }
+
+function selectCard(cardElement, dataType) {
+    if (dataType === 'node.js') {
+        dataType = 'node';
+    }
+
+    if (cardElement.dataset.tab === dataType) {
+        cardElement.style.display = 'flex';
+    }
+}
+
+function selectTab(e) {
+    if (e.target.classList.contains('tab')) {
+        const tabs = document.querySelectorAll('.tab');
+        const type = e.target.dataset.tab;
+        const cards = document.querySelectorAll('.card');
+
+        tabs.forEach(tab => tab.classList.remove('active-tab'));
+        cards.forEach(card => (card.style.display = 'none'));
+
+        e.target.classList.add('active-tab');
+
+        if (type === 'all') {
+            cards.forEach(card => (card.style.display = 'flex'));
+        } else {
+            cards.forEach(card => selectCard(card, type));
+        }
+    }
+}
+
+document.querySelector('.tabs > .topics').addEventListener('click', e => selectTab(e));
